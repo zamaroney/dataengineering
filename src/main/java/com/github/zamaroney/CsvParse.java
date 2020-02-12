@@ -15,9 +15,9 @@ import java.util.List;
 public class CsvParse {
 
   private List fileRows = new ArrayList();
+  private ArrayList<String> items = new ArrayList<>();
 
   public CsvParse(String infile) throws IOException, CsvValidationException {
-
     if (checkFile(infile)) {
       readCsv(infile);
     }
@@ -36,7 +36,6 @@ public class CsvParse {
   }
 
   protected void printCsv() {
-
     for (Object row : fileRows) {
       for (String fields : (String[]) row) {
         System.out.print(fields + ", ");

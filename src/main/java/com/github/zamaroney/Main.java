@@ -12,7 +12,6 @@ public class Main {
 
     CsvParse csvP = new CsvParse("src/data/SEOExample-1.csv");
     csvP.printCsv();
-
     Gson gson = new Gson();
     JsonReader jread = new JsonReader(new FileReader("src/Data/authors.json"));
     AuthorParse[] authors = gson.fromJson(jread, AuthorParse[].class);
@@ -20,5 +19,12 @@ public class Main {
     for (var element : authors) {
       System.out.println(element.getName());
     }
+
+    BookStoreDB bsdb = new BookStoreDB();
+    bsdb.insertIntoAuthor(authors);
+
+
+
+    bsdb.insertIntoBooks("src/data/CsvToDatabase.csv");
   }
 }
